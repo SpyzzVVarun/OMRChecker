@@ -23,7 +23,12 @@
        "minItems": 2,
        "maxItems": 2
      },
-  "concatenations": {},
+    "preProcessors": {
+       "description":"Custom configuration values to use in the template's directory"
+     },
+  "concatenations": {
+       "description":"The Contatenations parameter is a way to tell OMRChecker which fields need to be joined together before outputting into the csv"
+  },
   "singles": {
        "description":"The remaining fields(in order) whose readings shall be forwarded directly in the output csv",
        "type": "array",
@@ -32,5 +37,5 @@
        }
      }
   },
-  "required":["dimensions","bubbleDimensions","concatenations","singles"]
+  "required":["dimensions","bubbleDimensions","concatenations","singles","preProcessors"]
 }
