@@ -31,5 +31,6 @@
          "type":"string"
        }
      }
-  }
+  },
+  "required":["dimensions","bubbleDimensions","concatenations","singles"]
 }
