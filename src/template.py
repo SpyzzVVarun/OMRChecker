@@ -9,16 +9,20 @@
 
 import numpy as np
 from .constants import TEMPLATE_DEFAULTS_PATH, QTYPE_DATA
-from .utils.file import load_json
+from .utils.file import load_json,load_schema,validate_json
 from .utils.object import OVERRIDE_MERGER
 
 TEMPLATE_DEFAULTS = load_json(TEMPLATE_DEFAULTS_PATH)
 
 
-def open_template_with_defaults(template_path):
+def open_template_with_defaults(schema_path,template_path):
     user_template = load_json(template_path)
-    return OVERRIDE_MERGER.merge(TEMPLATE_DEFAULTS, user_template)
-
+    user_template = OVERRIDE_MERGER.merge(TEMPLATE_DEFAULTS, user_template)
+    is_valid, msg = validate_json(user_template,schema_path)
+    if is_valid:
+      return user_template
+    else:
+      print(msg)
 
 ### Coordinates Part ###
 class Pt:
@@ -50,8 +54,8 @@ class QBlock:
 
 
 class Template:
-    def __init__(self, template_path, extensions):
-        json_obj = open_template_with_defaults(template_path)
+    def __init__(self,schema_path, template_path, extensions):
+        json_obj = open_template_with_defaults(schema_path,template_path)
         self.path = template_path
         self.q_blocks = []
         # TODO: ajv validation - throw exception on key not exist
