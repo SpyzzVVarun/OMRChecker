@@ -55,8 +55,9 @@ def process_dir(root_dir, curr_dir, args, template=None):
 
     # Update local template (in current recursion stack)
     local_template_path = curr_dir.joinpath(constants.TEMPLATE_FILENAME)
+    local_schema_path = constants.SCHEMA_DEFAULTS_PATH
     if os.path.exists(local_template_path):
-        template = Template(local_template_path, PROCESSOR_MANAGER.processors)
+        template = Template(local_schema_path,local_template_path, PROCESSOR_MANAGER.processors)
 
     # Look for subdirectories for processing
     subdirs = [d for d in curr_dir.iterdir() if d.is_dir()]
