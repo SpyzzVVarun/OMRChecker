@@ -8,6 +8,7 @@
 """
 
 import numpy as np
+import sys
 from .constants import TEMPLATE_DEFAULTS_PATH, QTYPE_DATA
 from .utils.file import load_json,load_schema,validate_json
 from .utils.object import OVERRIDE_MERGER
@@ -23,6 +24,7 @@ def open_template_with_defaults(schema_path,template_path):
       return user_template
     else:
       print(msg)
+      sys.exit(1)
 
 ### Coordinates Part ###
 class Pt:
