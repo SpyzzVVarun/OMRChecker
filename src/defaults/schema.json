@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "Input",
+  "description": "OMRchecker input image schema",
+  "type": "object",
+  "properties":{
+     "dimensions":{
+       "description":"The dimensions to which each input image will be resized to before processing",
+       "type": "array",
+       "items": {
+         "type":"integer"
+       },
+       "minItems": 2,
+       "maxItems": 2
+     },
+  "bubbleDimensions": {
+       "description":"The dimensions of the overlay bubble area",
+       "type": "array",
+       "items": {
+         "type":"integer"
+       },
+       "minItems": 2,
+       "maxItems": 2
+     },
+  "concatenations": {},
+  "singles": {
+       "description":"The remaining fields(in order) whose readings shall be forwarded directly in the output csv",
+       "type": "array",
+       "items": {
+         "type":"string"
+       }
+     }
+  }
+}
