@@ -10,7 +10,7 @@
 import numpy as np
 import sys
 from .constants import TEMPLATE_DEFAULTS_PATH, QTYPE_DATA
-from .utils.file import load_json,load_schema,validate_json
+from .utils.file import load_json,validate_json
 from .utils.object import OVERRIDE_MERGER
 
 TEMPLATE_DEFAULTS = load_json(TEMPLATE_DEFAULTS_PATH)
