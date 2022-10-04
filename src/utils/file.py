@@ -7,14 +7,8 @@ def load_json(path, **rest):
         loaded = json.load(f, **rest)
     return loaded
 
-def load_schema(path,**rest):
-    with open(path, 'r') as f:
-        schema = json.load(f,**rest)
-    return schema
-
-
 def validate_json(json_data,schema_path):
-    execute_api_schema = load_schema(schema_path)
+    execute_api_schema = load_json(schema_path)
     v = Draft202012Validator(execute_api_schema)
     errors = sorted(v.iter_errors(json_data), key=lambda e: e.path)
 
